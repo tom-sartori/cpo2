@@ -6,7 +6,7 @@ public class App {
         System.out.println("Hello world!");
 
         Connection connection = DriverManager.getConnection(
-                "jdbc:postgresql://localhost:5434/app_db",
+                "jdbc:postgresql://postgres-db:5432/app_db",
                 "postgres", "postgres");
 
         System.out.println(connection.isValid(1));

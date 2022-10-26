@@ -1,0 +1,30 @@
+version: "3"
+
+services:
+  postgres:
+    image: postgres
+    container_name: postgres-db
+    volumes:
+      - app_vol:/var/lib/postgresql/data
+    ports:
+      - "5434:5432"
+    environment:
+        - POSTGRES_USER=postgres
+        - POSTGRES_PASSWORD=postgres
+    networks:
+      - cpo2-network
+
+  cpo2_jdbc:
+    build: .
+    container_name: cpo2_jdbc
+    networks:
+      - cpo2-network
+
+networks:
+  cpo2-network:
+    external:
+      name: cpo2-network
+
+volumes:
+  app_vol:
+    external: true
